@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#090609">
+  <meta name="description" content="رحلة عيد ميلاد رومانسية صُممت بكل الحب لسماح.">
+  <title>Happy Birthday Samah ❤️</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div class="starfield" aria-hidden="true"></div>
+  <canvas class="fx-canvas" aria-hidden="true"></canvas>
+  <div class="ambient-glow" aria-hidden="true"></div>
+
+  <button class="music-toggle" type="button" aria-label="تشغيل الموسيقى" aria-pressed="false">
+    <span class="music-icon" aria-hidden="true">♫</span>
+    <span class="music-label">الموسيقى</span>
+  </button>
+  <p class="sr-only music-status" aria-live="polite"></p>
+
+  <main>
+    <section class="scene intro is-active" id="intro" aria-labelledby="intro-title">
+      <div class="intro-content">
+        <p class="eyebrow intro-eyebrow"><span></span> حكاية كُتبت لكِ وحدك <span></span></p>
+        <h1 id="intro-title">في يومٍ مثل هذا،<br>وُلدت أجمل حكاية <em>في حياتي</em></h1>
+        <p class="intro-note">هناك مفاجأة صغيرة تنتظر صاحبة أجمل قلب...</p>
+        <button class="button button-gold start-button" type="button">
+          <span>افتحي مفاجأتك يا سمسم</span><span class="button-arrow" aria-hidden="true">←</span>
+        </button>
+        <span class="intro-orbit orbit-one" aria-hidden="true">✦</span>
+        <span class="intro-orbit orbit-two" aria-hidden="true">♡</span>
+      </div>
+      <span class="scroll-hint">رحلتك تبدأ هنا <span aria-hidden="true">↓</span></span>
+    </section>
+
+    <div class="journey" id="journey" hidden>
+      <section class="scene birthday section-shell" id="birthday" aria-labelledby="birthday-title">
+        <div class="section-inner birthday-inner">
+          <p class="eyebrow"><span class="eyebrow-line"></span> الحكاية بدأت في هذا اليوم <span class="eyebrow-line"></span></p>
+          <p class="date-label">يومٌ صار للعالم فيه معنى أجمل</p>
+          <h2 class="birthday-date" id="birthday-title" aria-label="تاريخ ميلاد سماح">
+            <span class="date-day"></span><span class="date-separator">·</span><span class="date-month"></span><span class="date-separator">·</span><span class="date-year"></span>
+          </h2>
+          <p class="date-caption">هذا اليوم مو مجرد تاريخ،<br>هذا اليوم اللي جت فيه أجمل إنسانة لقلبي</p>
+          <div class="date-ornament" aria-hidden="true"><span></span>✦<span></span></div>
+        </div>
+      </section>
+
+      <section class="scene candles section-shell" id="candles" aria-labelledby="candles-title">
+        <div class="section-inner">
+          <p class="eyebrow"><span class="eyebrow-line"></span> أغمضي عينيكِ للحظة <span class="eyebrow-line"></span></p>
+          <h2 id="candles-title" class="section-title">تمني أمنية <em>يا سمسم</em></h2>
+          <p class="section-copy">أتمنى أن تكون سنتك الجديدة أجمل من كل أمنياتك.</p>
+          <div class="cake" aria-label="كعكة عيد ميلاد عليها ثلاث شمعات">
+            <div class="candles-row">
+              <div class="candle"><span class="flame"></span><span class="wick"></span></div>
+              <div class="candle candle-tall"><span class="flame"></span><span class="wick"></span></div>
+              <div class="candle"><span class="flame"></span><span class="wick"></span></div>
+            </div>
+            <div class="cake-top"></div>
+            <div class="cake-layer cake-layer-top"><span class="icing-drip"></span><span class="icing-drip"></span><span class="icing-drip"></span></div>
+            <div class="cake-layer cake-layer-bottom"></div>
+            <div class="cake-plate"></div>
+          </div>
+          <button class="button button-outline blow-button" type="button">أطفئي الشموع <span aria-hidden="true">✧</span></button>
+          <p class="candle-message" aria-live="polite"></p>
+        </div>
+      </section>
+
+      <section class="scene gift-section section-shell" id="gift" aria-labelledby="gift-title">
+        <div class="section-inner">
+          <p class="eyebrow"><span class="eyebrow-line"></span> شيء صغير من قلبي <span class="eyebrow-line"></span></p>
+          <h2 id="gift-title" class="section-title">هذه هديتكِ <em>يا أجملهم</em></h2>
+          <p class="section-copy">اضغطي على الصندوق... يمكن أن يخفي أكثر مما تتوقعين.</p>
+          <button class="gift-button" type="button" aria-label="افتحي صندوق الهدية">
+            <span class="gift-burst" aria-hidden="true"></span>
+            <span class="gift-box">
+              <span class="gift-lid"><span class="gift-bow"></span></span>
+              <span class="gift-body"><span class="gift-ribbon"></span></span>
+            </span>
+            <span class="gift-ground" aria-hidden="true"></span>
+          </button>
+          <p class="gift-reveal" aria-live="polite">كل عام وانتي أجمل أقداري <span>يا سماح</span> <b>♥</b></p>
+          <span class="gift-hint">المسي الهدية لفتحها</span>
+        </div>
+      </section>
+
+      <section class="scene letter-section section-shell" id="letter" aria-labelledby="letter-title">
+        <div class="letter-card">
+          <span class="letter-corner corner-top" aria-hidden="true">✦</span>
+          <p class="eyebrow"><span class="eyebrow-line"></span> من قلبي إلى قلبك <span class="eyebrow-line"></span></p>
+          <h2 id="letter-title" class="section-title">كلمات <em>لكِ وحدك</em></h2>
+          <p class="letter-text" aria-live="polite"></p>
+          <span class="typing-cursor" aria-hidden="true"></span>
+          <p class="letter-signature">أحبكِ دائمًا <span>♥</span></p>
+          <span class="letter-corner corner-bottom" aria-hidden="true">✦</span>
+        </div>
+      </section>
+
+      <section class="scene memories section-shell" id="memories" aria-labelledby="memories-title">
+        <div class="section-inner memories-inner">
+          <p class="eyebrow"><span class="eyebrow-line"></span> لحظات أتمنى أن تبقى للأبد <span class="eyebrow-line"></span></p>
+          <h2 id="memories-title" class="section-title">أجمل الذكريات <em>معكِ</em></h2>
+          <p class="section-copy">كل لحظة معكِ تستحق أن تُحفظ كأنها صورة من أجمل حكاية.</p>
+          <div class="memory-gallery" aria-label="معرض ذكريات رومانسي">
+            <!-- Replace any memory-art block with: <img class="memory-photo" src="images/samah-1.jpg" alt="وصف الصورة"> -->
+            <article class="memory-card memory-one">
+              <div class="memory-art art-one" role="img" aria-label="سماء وردية عند الغروب">
+                <span class="art-sun"></span><span class="art-horizon"></span><span class="art-heart">♡</span>
+              </div>
+              <p>غروبٌ يشبه دفء قلبكِ</p>
+            </article>
+            <article class="memory-card memory-two">
+              <div class="memory-art art-two" role="img" aria-label="نجوم مضيئة في ليلة هادئة">
+                <span class="art-moon"></span><span class="art-star">✦</span><span class="art-star">✧</span><span class="art-star">✦</span>
+              </div>
+              <p>ليالٍ يحلو فيها الحديث معكِ</p>
+            </article>
+            <article class="memory-card memory-three">
+              <div class="memory-art art-three" role="img" aria-label="ورود حمراء رومانسية">
+                <span class="art-rose">✿</span><span class="art-rose">✿</span><span class="art-rose">✿</span>
+              </div>
+              <p>وردٌ يذكّرني بأنكِ أجمل</p>
+            </article>
+          </div>
+          <p class="gallery-hint">لإضافة صوركم، استبدلي رسومات البطاقات بصوركِ المفضلة داخل <code>index.html</code></p>
+        </div>
+      </section>
+
+      <section class="scene finale section-shell" id="finale" aria-labelledby="finale-title">
+        <div class="finale-content">
+          <p class="eyebrow"><span class="eyebrow-line"></span> وإلى حكاياتٍ أجمل قادمة <span class="eyebrow-line"></span></p>
+          <h2 class="samah-name" id="finale-title" aria-label="سماح">SAMAH</h2>
+          <span class="finale-heart" aria-hidden="true">♥</span>
+          <p class="finale-message">كل عام وانتي حبيبتي،<br>وكل عام وأنا أحبك أكثر من العام اللي قبله <span>❤️</span></p>
+          <button class="button button-gold restart-button" type="button"><span>أعيدي عيش المفاجأة</span><span aria-hidden="true">↻</span></button>
+          <p class="finale-signature">صُنعت بكل الحب، من أجلكِ أنتِ</p>
+        </div>
+      </section>
+    </div>
+  </main>
+</body>
+</html>
