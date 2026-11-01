@@ -5,9 +5,9 @@ const CONFIG = {
   nickname: "سمسم",
   // Use two digits for day/month and four for year; replace these placeholders with her real birthday.
   birthday: { day: "20", month: "11", year: "2005" },
-  letter: "يا سمسم يا أجمل هدية جابتها لي الحياة، كل عام وانتي حبيبتي وفرحة قلبي وأجمل تفاصيل أيامي. اليوم مو بس يوم ميلادك، اليوم ذكرى ميلاد الإنسانة اللي خلت لحياتي معنى أجمل، واللي صارت ضحكتها تسعدني ووجودها يطمن قلبي. أتمنى لك عمر مليان فرح وراحة وتحقيق أمنيات، وأتمنى أكون معك في كل أعياد ميلادك القادمة، وأحتفل فيك كل سنة وأشوف ابتسامتك قدامي. أحبك يا سماح، وكل عام وانتي لي أجمل حكاية ❤️",
+  letter: "يا سمسم يا أجمل هدية جابتها لي الحياة، كل عام وانتي حبيبتي وفرحة قلبي وأجمل تفاصيل أيامي. اليوم مو بس يوم عيدك، لكنه يوم كل شيء في حياتي صار أجمل بوجودك. أقدر أقولك إنكِ أغلى من كل الكلمات، وأعز من كل الأحلام. كل عام وانتي مصدر سعادتي، وقلبي يختاركِ في كل ثانية. أحبكِ أكثر من كل الكلمات التي يمكن أن توصف بها الحُب، وكل عام أفرح أكثر بوجودكِ في حياتي. أنتِ كل شيء حلو في هذا العالم، وكل ما أتمناه الآن هو أن تبقي حياتنا مليئة بالضحك، الحب، والذكريات الجميلة. أنتِِ اللي أستيقظ لها، واللي أتعطر بهواكِ، واللي جعلت كل يومٍ عندي يختلف. كل عام وانتي حبيبتي، وكل عام وأنا أحبك أكثر." ,
   // Optional: set to a local file such as "assets/music.mp3". Leave blank to use the synthesized melody.
-  musicPath: ""
+  musicPath: "https://archive.org/download/ana-bashaak/Ana%20Bashaak.mp3"
 };
 
 const body = document.body;
@@ -210,7 +210,7 @@ const finaleObserver = new IntersectionObserver((entries) => {
   if (entries.some((entry) => entry.isIntersecting) && !finalCelebrationStarted) {
     finalCelebrationStarted = true;
     for (let i = 0; i < 55; i += 1) addParticle(i % 3 === 0 ? "heart" : "petal", randomBetween(0, window.innerWidth), randomBetween(-window.innerHeight, window.innerHeight));
-    for (let i = 0; i < 5; i += 1) window.setTimeout(() => burst(randomBetween(window.innerWidth * .12, window.innerWidth * .88), randomBetween(window.innerHeight * .1, window.innerHeight * .55), 26), i * 420);
+    for (let i = 0; i < 5; i += 1) window.setTimeout(() => burst(randomBetween(window.innerWidth * .12, window.innerWidth * .88), randomBetween(window.innerHeight * .1, window.innerHeight * .55), 26), i * 180);
   }
 }, { threshold: .4 });
 finaleObserver.observe(document.querySelector("#finale"));
