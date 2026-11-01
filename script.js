@@ -10,7 +10,12 @@ const CONFIG = {
   musicPath: ""
 };
 
+const SURPRISE_PASSWORD = "دلوعة ثابت";
 const body = document.body;
+const lockScreen = document.querySelector(".surprise-lock");
+const lockForm = document.querySelector(".lock-form");
+const passwordInput = document.querySelector("#surprise-password");
+const lockError = document.querySelector(".lock-error");
 const intro = document.querySelector(".intro");
 const startButton = document.querySelector(".start-button");
 const musicButton = document.querySelector(".music-toggle");
@@ -41,6 +46,39 @@ document.querySelector(".gift-reveal span").textContent = CONFIG.name;
 document.querySelector(".samah-name").textContent = CONFIG.nameLatin;
 document.querySelector(".candles .section-title em").textContent = `يا ${CONFIG.nickname}`;
 document.querySelector(".start-button span:first-child").textContent = `افتحي مفاجأتك يا ${CONFIG.nickname}`;
+
+lockForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+  if (passwordInput.value !== SURPRISE_PASSWORD) {
+    passwordInput.setAttribute("aria-invalid", "true");
+    lockError.textContent = "مو هي الكلمة يا دلوعتي، جربي مرة ثانية 🤍";
+    lockError.classList.remove("is-error");
+    void lockError.offsetWidth;
+    lockError.classList.add("is-error");
+    passwordInput.select();
+    return;
+  }
+
+  passwordInput.removeAttribute("aria-invalid");
+  lockError.textContent = "";
+  passwordInput.disabled = true;
+  lockForm.querySelector("button").disabled = true;
+  document.querySelector("main").hidden = false;
+  musicButton.hidden = false;
+  body.classList.remove("is-locked");
+  lockScreen.setAttribute("aria-hidden", "true");
+  lockScreen.classList.add("is-unlocking");
+  window.setTimeout(() => {
+    lockScreen.hidden = true;
+    startButton.focus({ preventScroll: true });
+  }, reduceMotion ? 20 : 700);
+});
+
+passwordInput.addEventListener("input", () => {
+  passwordInput.removeAttribute("aria-invalid");
+  lockError.textContent = "";
+  lockError.classList.remove("is-error");
+});
 
 function resizeCanvas() {
   const ratio = Math.min(window.devicePixelRatio || 1, 1.5);
