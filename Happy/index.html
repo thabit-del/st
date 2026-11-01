@@ -12,18 +12,34 @@
   <link rel="stylesheet" href="style.css">
   <script src="script.js" defer></script>
 </head>
-<body>
+<body class="is-locked">
   <div class="starfield" aria-hidden="true"></div>
   <canvas class="fx-canvas" aria-hidden="true"></canvas>
   <div class="ambient-glow" aria-hidden="true"></div>
 
-  <button class="music-toggle" type="button" aria-label="تشغيل الموسيقى" aria-pressed="false">
+  <section class="surprise-lock" aria-labelledby="lock-title">
+    <div class="lock-card">
+      <span class="lock-heart" aria-hidden="true">♡</span>
+      <p class="eyebrow"><span class="eyebrow-line"></span> هدية صغيرة لصاحبة القلب الكبير <span class="eyebrow-line"></span></p>
+      <h1 id="lock-title" class="lock-title">مفاجأتكِ تنتظركِ</h1>
+      <p class="lock-copy">عشان توصلي لمفاجأتك، اكتبي كلمة السر يا سمسم 🤍</p>
+      <form class="lock-form">
+        <label class="sr-only" for="surprise-password">كلمة السر</label>
+        <input id="surprise-password" class="lock-input" type="password" placeholder="كلمة السر" autocomplete="off" required>
+        <button class="button button-gold lock-submit" type="submit"><span>افتحي مفاجأتك</span><span aria-hidden="true">♡</span></button>
+        <p class="lock-error" aria-live="polite"></p>
+      </form>
+      <span class="lock-ornament" aria-hidden="true">✦</span>
+    </div>
+  </section>
+
+  <button class="music-toggle" type="button" aria-label="تشغيل الموسيقى" aria-pressed="false" hidden>
     <span class="music-icon" aria-hidden="true">♫</span>
     <span class="music-label">الموسيقى</span>
   </button>
   <p class="sr-only music-status" aria-live="polite"></p>
 
-  <main>
+  <main hidden>
     <section class="scene intro is-active" id="intro" aria-labelledby="intro-title">
       <div class="intro-content">
         <p class="eyebrow intro-eyebrow"><span></span> حكاية كُتبت لكِ وحدك <span></span></p>
@@ -128,6 +144,7 @@
               <p>وردٌ يذكّرني بأنكِ أجمل</p>
             </article>
           </div>
+          
         </div>
       </section>
 
