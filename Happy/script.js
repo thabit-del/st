@@ -5,12 +5,17 @@ const CONFIG = {
   nickname: "سمسم",
   // Use two digits for day/month and four for year; replace these placeholders with her real birthday.
   birthday: { day: "20", month: "11", year: "2005" },
-  letter: "يا سمسم يا أجمل هدية جابتها لي الحياة، كل عام وانتي حبيبتي وفرحة قلبي وأجمل تفاصيل أيامي. اليوم مو بس يوم عيدك، لكنه يوم كل شيء في حياتي صار أجمل بوجودك. أقدر أقولك إنكِ أغلى من كل الكلمات، وأعز من كل الأحلام. كل عام وانتي مصدر سعادتي، وقلبي يختاركِ في كل ثانية. أحبكِ أكثر من كل الكلمات التي يمكن أن توصف بها الحُب، وكل عام أفرح أكثر بوجودكِ في حياتي. أنتِ كل شيء حلو في هذا العالم، وكل ما أتمناه الآن هو أن تبقي حياتنا مليئة بالضحك، الحب، والذكريات الجميلة. أنتِِ اللي أستيقظ لها، واللي أتعطر بهواكِ، واللي جعلت كل يومٍ عندي يختلف. كل عام وانتي حبيبتي، وكل عام وأنا أحبك أكثر." ,
+  letter: "يا سمسم يا أجمل هدية جابتها لي الحياة، كل عام وانتي حبيبتي وفرحة قلبي وأجمل تفاصيل أيامي. اليوم مو بس يوم ميلادك، اليوم ذكرى ميلاد الإنسانة اللي خلت لحياتي معنى أجمل، واللي صارت ضحكتها تسعدني ووجودها يطمن قلبي. أتمنى لك عمر مليان فرح وراحة وتحقيق أمنيات، وأتمنى أكون معك في كل أعياد ميلادك القادمة، وأحتفل فيك كل سنة وأشوف ابتسامتك قدامي. أحبك يا سماح، وكل عام وانتي لي أجمل حكاية ❤️",
   // Optional: set to a local file such as "assets/music.mp3". Leave blank to use the synthesized melody.
-  musicPath: "https://archive.org/download/ana-bashaak/Ana%20Bashaak.mp3"
+  musicPath: ""
 };
 
+const SURPRISE_PASSWORD = "دلوعة ثابت";
 const body = document.body;
+const lockScreen = document.querySelector(".surprise-lock");
+const lockForm = document.querySelector(".lock-form");
+const passwordInput = document.querySelector("#surprise-password");
+const lockError = document.querySelector(".lock-error");
 const intro = document.querySelector(".intro");
 const startButton = document.querySelector(".start-button");
 const musicButton = document.querySelector(".music-toggle");
@@ -41,6 +46,39 @@ document.querySelector(".gift-reveal span").textContent = CONFIG.name;
 document.querySelector(".samah-name").textContent = CONFIG.nameLatin;
 document.querySelector(".candles .section-title em").textContent = `يا ${CONFIG.nickname}`;
 document.querySelector(".start-button span:first-child").textContent = `افتحي مفاجأتك يا ${CONFIG.nickname}`;
+
+lockForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+  if (passwordInput.value !== SURPRISE_PASSWORD) {
+    passwordInput.setAttribute("aria-invalid", "true");
+    lockError.textContent = "مو هي الكلمة يا دلوعتي، جربي مرة ثانية 🤍";
+    lockError.classList.remove("is-error");
+    void lockError.offsetWidth;
+    lockError.classList.add("is-error");
+    passwordInput.select();
+    return;
+  }
+
+  passwordInput.removeAttribute("aria-invalid");
+  lockError.textContent = "";
+  passwordInput.disabled = true;
+  lockForm.querySelector("button").disabled = true;
+  document.querySelector("main").hidden = false;
+  musicButton.hidden = false;
+  body.classList.remove("is-locked");
+  lockScreen.setAttribute("aria-hidden", "true");
+  lockScreen.classList.add("is-unlocking");
+  window.setTimeout(() => {
+    lockScreen.hidden = true;
+    startButton.focus({ preventScroll: true });
+  }, reduceMotion ? 20 : 700);
+});
+
+passwordInput.addEventListener("input", () => {
+  passwordInput.removeAttribute("aria-invalid");
+  lockError.textContent = "";
+  lockError.classList.remove("is-error");
+});
 
 function resizeCanvas() {
   const ratio = Math.min(window.devicePixelRatio || 1, 1.5);
@@ -210,7 +248,7 @@ const finaleObserver = new IntersectionObserver((entries) => {
   if (entries.some((entry) => entry.isIntersecting) && !finalCelebrationStarted) {
     finalCelebrationStarted = true;
     for (let i = 0; i < 55; i += 1) addParticle(i % 3 === 0 ? "heart" : "petal", randomBetween(0, window.innerWidth), randomBetween(-window.innerHeight, window.innerHeight));
-    for (let i = 0; i < 5; i += 1) window.setTimeout(() => burst(randomBetween(window.innerWidth * .12, window.innerWidth * .88), randomBetween(window.innerHeight * .1, window.innerHeight * .55), 26), i * 180);
+    for (let i = 0; i < 5; i += 1) window.setTimeout(() => burst(randomBetween(window.innerWidth * .12, window.innerWidth * .88), randomBetween(window.innerHeight * .1, window.innerHeight * .55), 26), i * 420);
   }
 }, { threshold: .4 });
 finaleObserver.observe(document.querySelector("#finale"));
